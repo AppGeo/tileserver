@@ -1,11 +1,35 @@
 <div id='map'></div>
   <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js?2"></script>
   <script src="/leaflet.hash.js"></script>
+  {{#if template}}
+    <script src="/leaflet.utfgrid.js"></script>
+    <script src="/handlebars.runtime.js"></script>
+    <script>
+     var template = Handlebars.template({{{compiled}}});
+    </script>
+  {{/if}}
   <script>
-    var m = L.map('map');
+  var bounds = [{{bounds}}];
+    var m = L.map('map',{
+      maxZoom:{{maxzoom}},
+      minZoom:{{minzoom}},
+      maxBounds:[[bounds[1],bounds[0]],[bounds[3],bounds[2]]]
+    });
+    var center = [{{{center}}}];
     if(!location.hash){
-      m.setView([0,0],2);
+      m.setView([center[1],center[0]],center[2]);
     }
     m.addHash();
-    L.tileLayer('/{{map}}/{z}/{x}/{y}.png').addTo(m);
+    L.tileLayer("{{leaflet.tiles}}").addTo(m);
+    {{#if template}}
+      var popup = L.popup();
+      var grids = new L.UtfGrid("{{leaflet.grids}}?callback={cb}");
+      grids.on('click',function(e){
+        if(!e.data){
+          return;
+        }
+        popup.setLatLng(e.latlng).setContent(template({__full__:e.data})).openOn(m);
+      });
+      m.addLayer(grids);
+    {{/if}}
 </script>

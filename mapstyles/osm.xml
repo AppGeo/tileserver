@@ -4,12 +4,18 @@
 
 <Parameters>
   <Parameter name="bounds">-180,-85.0511,180,85.0511</Parameter>
-  <Parameter name="center">-71.2271,42.3768,9</Parameter>
+  <Parameter name="center">-71.0667,42.3517,15</Parameter>
   <Parameter name="format">png</Parameter>
+  <Parameter name="interactivity_layer">roads_high</Parameter>
+  <Parameter name="interactivity_fields">name,type</Parameter>
   <Parameter name="minzoom">0</Parameter>
   <Parameter name="maxzoom">18</Parameter>
   <Parameter name="attribution"><![CDATA[Data © OpenStreetMap (and) contributors, CC-BY-SA]]></Parameter>
   <Parameter name="name"><![CDATA[OSM Bright]]></Parameter>
+  <Parameter name="template"><![CDATA[{{#__location__}}{{/__location__}}{{#__teaser__}}{{/__teaser__}}{{#__full__}}<div>
+
+<strong>{{{name}}}</strong>, of type {{{type}}}
+</div>{{/__full__}}]]></Parameter>
 </Parameters>
 
 <FontSet name="fontset-0">
@@ -30561,9 +30567,9 @@
        <Parameter name="geometry_field"><![CDATA[way]]></Parameter>
        <Parameter name="id"><![CDATA[roads_high]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
-       <Parameter name="project"><![CDATA[osm-bright-master]]></Parameter>
-       <Parameter name="srs"><![CDATA[null]]></Parameter>
-       <Parameter name="table"><![CDATA[( SELECT way, COALESCE(highway, railway) AS type, 0 AS tunnel, 0 AS bridge, access, 'fill' AS render,
+       <Parameter name="project"><![CDATA[OSMBright]]></Parameter>
+       <Parameter name="srs"><![CDATA[+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over]]></Parameter>
+       <Parameter name="table"><![CDATA[( SELECT name, way, COALESCE(highway, railway) AS type, 0 AS tunnel, 0 AS bridge, access, 'fill' AS render,
   CASE
     WHEN highway IN ('motorway', 'trunk') THEN 'motorway'
     WHEN highway IN ('primary', 'secondary') THEN 'mainroad'
@@ -30579,6 +30585,7 @@
   ORDER BY z_order
 ) AS data]]></Parameter>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
+       <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
     </Datasource>
   </Layer>
 
