@@ -1,0 +1,21 @@
+{
+  "name": "tileserver",
+  "version": "0.0.0",
+  "main": "index.js",
+  "private": true,
+  "dependencies": {
+    "express": "~3.4.6",
+    "request": "~2.29.0",
+    "then-redis": "~0.3.9",
+    "mapnik": "~0.7.25",
+    "tilelive": "~4.5.3",
+    "tilelive-mapnik": "~0.6.4",
+    "bluebird": "~1.0.0",
+    "express3-handlebars": "~0.5.0",
+    "mbtiles": "~0.4.2",
+    "tilelive-cache": "git://github.com/mojodna/tilelive-cache.git"
+  },
+  "scripts": {
+    "start": "node --harmony index.js"
+  }
+}

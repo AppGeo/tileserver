@@ -1,0 +1,11 @@
+<div id='map'></div>
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js?2"></script>
+  <script src="/leaflet.hash.js"></script>
+  <script>
+    var m = L.map('map');
+    if(!location.hash){
+      m.setView([0,0],2);
+    }
+    m.addHash();
+    L.tileLayer('/{{map}}/{z}/{x}/{y}.png').addTo(m);
+</script>

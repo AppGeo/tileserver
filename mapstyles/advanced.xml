@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Map[]>
+<Map srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over" background-color="#b8dee6" maximum-extent="-20037508.34,-20037508.34,20037508.34,20037508.34">
+
+<Parameters>
+  <Parameter name="bounds">-180,-85.05112877980659,180,85.05112877980659</Parameter>
+  <Parameter name="center">0,0,2</Parameter>
+  <Parameter name="format">png</Parameter>
+  <Parameter name="minzoom">0</Parameter>
+  <Parameter name="maxzoom">22</Parameter>
+  <Parameter name="name"><![CDATA[More Advanced]]></Parameter>
+</Parameters>
+
+
+<Style name="land" filter-mode="first" >
+  <Rule>
+    <LineSymbolizer stroke="#000000" stroke-width="0.5" />
+    <PolygonSymbolizer fill-opacity="1" fill="#ffffff" />
+  </Rule>
+</Style>
+<Layer name="land"
+  srs="+proj=longlat +ellps=WGS84 +no_defs">
+    <StyleName>land</StyleName>
+    <Datasource>
+       <Parameter name="file"><![CDATA[data/ne_10m_admin_0_countries.shp]]></Parameter>
+       <Parameter name="type"><![CDATA[shape]]></Parameter>
+    </Datasource>
+  </Layer>
+
+<Style name="maTowns" filter-mode="first" >
+  <Rule>
+    <Filter>([FOURCOLOR] = 4)</Filter>
+    <LineSymbolizer stroke="#000000" stroke-width="0.5" />
+    <PolygonSymbolizer fill="#00aa33" fill-opacity="1" />
+  </Rule>
+  <Rule>
+    <Filter>([FOURCOLOR] = 3)</Filter>
+    <LineSymbolizer stroke="#000000" stroke-width="0.5" />
+    <PolygonSymbolizer fill="#aa00aa" fill-opacity="1" />
+  </Rule>
+  <Rule>
+    <Filter>([FOURCOLOR] = 2)</Filter>
+    <LineSymbolizer stroke="#000000" stroke-width="0.5" />
+    <PolygonSymbolizer fill="#aaaa00" fill-opacity="1" />
+  </Rule>
+  <Rule>
+    <Filter>([FOURCOLOR] = 1)</Filter>
+    <LineSymbolizer stroke="#000000" stroke-width="0.5" />
+    <PolygonSymbolizer fill="#0000aa" fill-opacity="1" />
+  </Rule>
+  <Rule>
+    <LineSymbolizer stroke="#000000" stroke-width="0.5" />
+    <PolygonSymbolizer fill-opacity="1" />
+  </Rule>
+</Style>
+<Layer name="maTowns"
+  srs="+proj=lcc +lat_1=41.71666666666667 +lat_2=42.68333333333333 +lat_0=41 +lon_0=-71.5 +x_0=200000 +y_0=750000 +datum=NAD83 +units=m +no_defs">
+    <StyleName>maTowns</StyleName>
+    <Datasource>
+       <Parameter name="file"><![CDATA[data/TOWNSSURVEY_POLYM.shp]]></Parameter>
+       <Parameter name="id"><![CDATA[maTowns]]></Parameter>
+       <Parameter name="project"><![CDATA[lessBasic]]></Parameter>
+       <Parameter name="srs"><![CDATA[]]></Parameter>
+       <Parameter name="type"><![CDATA[shape]]></Parameter>
+    </Datasource>
+  </Layer>
+
+<Style name="roadinventory" filter-mode="first" >
+  <Rule>
+    <Filter>([FacilityTy] = 1) and ([Functional] = 0)</Filter>
+    <LineSymbolizer stroke="#aaaaaa" stroke-width="1" />
+  </Rule>
+  <Rule>
+    <Filter>([FacilityTy] = 1)</Filter>
+    <LineSymbolizer stroke-width="1" stroke="#b92828" />
+  </Rule>
+</Style>
+<Layer name="roadinventory"
+  srs="+proj=lcc +lat_1=41.71666666666667 +lat_2=42.68333333333333 +lat_0=41 +lon_0=-71.5 +x_0=200000 +y_0=750000 +datum=NAD83 +units=m +no_defs">
+    <StyleName>roadinventory</StyleName>
+    <Datasource>
+       <Parameter name="file"><![CDATA[data/RoadInventory.shp]]></Parameter>
+       <Parameter name="type"><![CDATA[shape]]></Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
