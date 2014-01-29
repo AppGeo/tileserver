@@ -1,6 +1,0 @@
-{
-  "sources":{
-    "mapnik":["advanced","basic","osm"],
-    "mbtiles":["dc"]
-  }
-}
