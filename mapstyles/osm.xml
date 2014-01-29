@@ -13,8 +13,9 @@
   <Parameter name="attribution"><![CDATA[Data © OpenStreetMap (and) contributors, CC-BY-SA]]></Parameter>
   <Parameter name="name"><![CDATA[OSM Bright]]></Parameter>
   <Parameter name="template"><![CDATA[{{#__location__}}{{/__location__}}{{#__teaser__}}{{/__teaser__}}{{#__full__}}<div>
-
-<strong>{{{name}}}</strong>, of type {{{type}}}
+{{#name}}<strong>
+{{{name}}}</strong>, of 
+{{/name}}type {{{type}}}
 </div>{{/__full__}}]]></Parameter>
 </Parameters>
 

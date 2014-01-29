@@ -3,9 +3,10 @@
   <script src="/leaflet.hash.js"></script>
   {{#if template}}
     <script src="/leaflet.utfgrid.js"></script>
-    <script src="/handlebars.runtime.js"></script>
+    <script src="/mustache.js"></script>
     <script>
-     var template = Handlebars.template({{{compiled}}});
+     var template = "{{{template}}}";
+     Mustache.parse(template);
     </script>
   {{/if}}
   <script>
@@ -28,7 +29,7 @@
         if(!e.data){
           return;
         }
-        popup.setLatLng(e.latlng).setContent(template({__full__:e.data})).openOn(m);
+        popup.setLatLng(e.latlng).setContent(Mustache.render(template,{__full__:e.data})).openOn(m);
       });
       m.addLayer(grids);
     {{/if}}
